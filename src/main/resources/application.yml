@@ -1,0 +1,28 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /api
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/dugu?useUnicode=true&characterEncoding=utf8
+    username: root
+    password: 123456
+mybatis:
+  mapper-locations: classpath:mapper/*Mapper.xml
+  configuration:
+    map-underscore-to-camel-case: true
+    #全局映射器启用缓存
+    mybatis.configuration.cache-enabled : true
+    #查询时,关闭关联对象及时加载以提高性能
+    mybatis.configuration.lazy-loading-enabled : false
+    #按需加载字段(加载字段由SQL指定),不会加载关联表的所有字段,以提高性能
+    mybatis.configuration.aggressive-lazy-loading : false
+    #允许返回不同的结果集以达到通用的效果
+    mybatis.configuration.multiple-result-sets-enabled : true
+    #对于批量更新操作缓存SQL以提高性能
+    mybatis.configuration.default-executor-type : REUSE
+    #数据库执行超时时间
+    mybatis.configuration.default-statement-timeout : 25000
+    #控制台打印日志
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
